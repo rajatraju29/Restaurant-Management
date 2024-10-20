@@ -1,0 +1,67 @@
+{
+  "posts": [
+    {
+      "id": "0",
+      "name": "anshu sviet",
+      "email": "kant496@gmail.com",
+      "mobile": 8210742035,
+      "address": "dffhfg,fghfg",
+      "service": "fghfhhf"
+    },
+    {
+      "id": "0",
+      "name": "rajesh kumar",
+      "email": "rajesh56@gmail.com",
+      "mbile": 9631105960,
+      "address": "fhfg@gmail.com",
+      "service": "gffh"
+    },
+    {
+      "id": "0",
+      "name": "pitnu kumar",
+      "email": "pintu586@gmail.com",
+      "mobile": 913454645,
+      "address": "ffgf,gfh",
+      "service": "fast food"
+    },
+    {
+      "id": "0",
+      "name": "dinesh kumar",
+      "email": "dinesh586@gmail.com",
+      "mobile": 9631109340,
+      "address": "fhfgjjjjjjj,gjgj",
+      "service": "fastfood"
+    },
+    {
+      "id": "3b9e",
+      "name": "harshkant raj",
+      "email": "harsh48@gmail.com",
+      "mobile": 9631109450,
+      "address": "dgfhfg,fhfgf"
+    }
+  ],
+  "comments": [],
+  "Signup": [
+    {
+      "id": "1",
+      "name": "Ashish",
+      "email": "Ashish45@gmail.com",
+      "Mobile": 8210742034,
+      "Password": "rajat@123"
+    },
+    {
+      "id": "3d8e",
+      "name": "kartik",
+      "email": "kartik",
+      "mobile": 8210732034,
+      "password": "kartik@123"
+    },
+    {
+      "id": "bc2c",
+      "name": "avishek raj",
+      "email": "avi123@gmail.com",
+      "mobile": 9631109630,
+      "password": "pos@123"
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+<div class="content-body">
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+      <!-- Brand Name -->
+      <a class="navbar-brand text-light" href="#">Resto App V2.0</a>
+
+      <!-- Toggler for mobile view -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Links and Buttons -->
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- About Us Link -->
+          <li class="nav-item">
+            <a class="nav-link text-light" routerLink="/about-us">About Us</a>
+          </li>
+          <!-- Contact Us Link -->
+          <li class="nav-item">
+            <a class="nav-link text-light" routerLink="/contact-us">Contact Us</a>
+          </li>
+        </ul>
+
+        <!-- Add Restaurant and Logout Buttons -->
+        <div class="d-flex">
+          <button (click)="clickAddResto()" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Restaurant
+          </button>
+          <button routerLink="/login" (click)="logout()" class="btn btn-warning">Logout</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <br>
+
+  <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <marquee behavior="scroll" direction="left">
+          <h1 class="display-4 text-center">Restuarent Management Application</h1>
+      </marquee>
+
+
+        <br>
+      </div>
+    </div>
+  <br>
+
+    <div class="form-outline">
+    <input type="text"style="width:20%;margin-left:72%"[(ngModel)]="userFilter.name"class="form-control"placeholder="Search Restaurant">
+  </div>
+
+  <!----Table-->
+  <div class="table-responsive">
+  <table class="table mt-4">         <!---mt 4 mrgin 4 from top-->
+      <thead>
+          <tr>
+              <!-- <th scope="col">R.Id</th> -->
+              <th scope="col">Name</th>
+              <th scope="col">Email </th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Address</th>
+              <th scope="col">Services</th>
+              <th scope="col">Action</th>
+          </tr>
+      </thead>
+  <tbody>
+      <tr *ngFor="let data of allRestaurantData">
+          <!-- <td>{{data.id}}</td> -->
+          <td>{{data.name}}</td>
+          <td>{{data.email}}</td>
+          <td>{{data.mobile}}</td>
+          <td>{{data.address}}</td>
+          <td>{{data.services}}</td>
+          <td>
+            <!--  <button data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="oneditresto(data)"  class="btn btn-info">Edit</button>
+              &nbsp;&nbsp;<button   class="btn btn-danger"(click)="deleteResto(data)">Delete</button>  -->
+
+              <mat-icon data-bs-toggle="modal" data-bs-target="#exampleModal" color="primary"(click)="onEditRestaurant(data)">edit</mat-icon>
+              &nbsp; <mat-icon color="warn"(click)="deleteRestaurant(data)" >delete</mat-icon>
+          </td>
+      </tr>
+  </tbody>
+
+
+  </table>
+
+     <!--pagination-->
+   <div class="pagination">
+    <pagination-controls (pageChange)="page=$event"></pagination-controls>
+   </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div style="background:blue" class="modal-header">
+            <h5  style="font-size:26px;color:white;font-weight: 700;margin-left: 62px;"class="modal-title" id="exampleModalLabel">RESTUARENT RECORDS</h5>
+            <button style="font-size: 20px;"type="button"class="btn-close "  data-bs-dismiss="modal" aria-label="Close">
+            </button>
+          </div>
+
+          <!--MODAL BOX-->
+          <div style="background: white;"class="modal-body">
+              <!--form -->
+              <form [formGroup]="formValue">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Name</label>
+                  <input type="name" formControlName="name" maxlength="20"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name">
+                </div>
+                <br>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email"formControlName="email"maxlength="25" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+                  </div>
+                 <br>
+
+                 <div class="form-group">
+                  <label for="exampleInputEmail1">Mobile.No</label>
+                  <input type="number"formControlName="mobile"maxlength="10"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Mobile">
+
+                </div>
+                <br>
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Address</label>
+                  <input type="name"formControlName="address" maxlength="30"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+
+                </div>
+                <br>
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Services</label>
+                  <input type="name"formControlName="services" maxlength="20" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Services">
+
+                </div>
+                <br>
+                </form>
+          </div>
+          <div style="background: blue;"class="modal-footer">
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+            <button *ngIf="showAdd" type="button"[disabled]="formValue.invalid" class="btn btn-success"(click)="addRestaurant()">Add details</button>
+            <button *ngIf="showbtn"type="button"[disabled]="formValue.invalid" class="btn btn-success" (click)="updateRestaurant()">Update details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>

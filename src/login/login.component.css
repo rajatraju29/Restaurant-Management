@@ -1,0 +1,16 @@
+.container {
+  margin-top: 20px;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.card-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-subtitle {
+  margin-bottom: 20px;
+}
